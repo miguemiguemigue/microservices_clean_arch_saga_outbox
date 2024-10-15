@@ -1,0 +1,12 @@
+/food-ordering-system/common/common.iml
+/food-ordering-system/common-domain/common-domain.iml
+/food-ordering-system/food-ordering-system.iml
+/.idea/
+/food-ordering-system/order-service/order-application/order-application.iml
+/food-ordering-system/order-service/order-domain/order-application-service/order-application-service.iml
+/food-ordering-system/order-service/order-container/order-container.iml
+/food-ordering-system/order-service/order-dataaccess/order-dataaccess.iml
+/food-ordering-system/order-service/order-domain/order-domain.iml
+/food-ordering-system/order-service/order-domain/order-domain-core/order-domain-core.iml
+/food-ordering-system/order-service/order-messaging/order-messaging.iml
+/food-ordering-system/order-service/order-service.iml
