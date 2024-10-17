@@ -10,3 +10,12 @@
 /food-ordering-system/order-service/order-domain/order-domain-core/order-domain-core.iml
 /food-ordering-system/order-service/order-messaging/order-messaging.iml
 /food-ordering-system/order-service/order-service.iml
+/food-ordering-system/common/common-domain/target/
+/food-ordering-system/common/target/
+/food-ordering-system/order-service/order-application/target/
+/food-ordering-system/order-service/order-container/target/
+/food-ordering-system/order-service/order-dataaccess/target/
+/food-ordering-system/order-service/order-domain/order-application-service/target/
+/food-ordering-system/order-service/order-domain/order-domain-core/target/
+/food-ordering-system/order-service/order-messaging/target/
+/food-ordering-system/common/common-domain/common-domain.iml
