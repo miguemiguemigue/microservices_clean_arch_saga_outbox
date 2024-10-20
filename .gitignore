@@ -19,3 +19,4 @@
 /food-ordering-system/order-service/order-domain/order-domain-core/target/
 /food-ordering-system/order-service/order-messaging/target/
 /food-ordering-system/common/common-domain/common-domain.iml
+/food-ordering-system/infrastructure/docker-compose/volumes/
