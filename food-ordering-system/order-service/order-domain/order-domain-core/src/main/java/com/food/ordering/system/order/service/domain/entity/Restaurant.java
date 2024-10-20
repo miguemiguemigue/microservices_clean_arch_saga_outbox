@@ -39,17 +39,17 @@ public class Restaurant extends AggregateRoot<RestaurantId> {
         }
 
         public Builder id(RestaurantId restaurantId) {
-            restaurantId = restaurantId;
+            this.restaurantId = restaurantId;
             return this;
         }
 
         public Builder products(List<Product> val) {
-            products = val;
+            this.products = val;
             return this;
         }
 
         public Builder active(boolean val) {
-            active = val;
+            this.active = val;
             return this;
         }
 
