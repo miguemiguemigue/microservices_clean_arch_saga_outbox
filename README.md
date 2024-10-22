@@ -11,8 +11,11 @@
 
 * **kafka**
   * kafka-config-data
+    * Config data classes with properties for consumer/producer init
   * kafka-consumer
+    * Generic consumer
   * kafka-producer
+    * Generic producer
   * kafka-model
     * Avro model definition and classes generation using Avro maven plugin
 
@@ -31,3 +34,4 @@
 - **order-container**: Spring boot project and jar to run the Order microservice
 
 #
+

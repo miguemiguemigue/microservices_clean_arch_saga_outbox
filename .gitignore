@@ -20,3 +20,9 @@
 /food-ordering-system/order-service/order-messaging/target/
 /food-ordering-system/common/common-domain/common-domain.iml
 /food-ordering-system/infrastructure/docker-compose/volumes/
+/food-ordering-system/infrastructure/kafka/kafka-producer/target/
+/food-ordering-system/infrastructure/kafka/kafka-consumer/target/
+/food-ordering-system/infrastructure/kafka/kafka-config-data/target/
+/food-ordering-system/common/common-application/target/
+*.iml
+/food-ordering-system/infrastructure/kafka/kafka-model/target/
