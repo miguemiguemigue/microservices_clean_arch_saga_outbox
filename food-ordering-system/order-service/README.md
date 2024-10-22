@@ -2,7 +2,7 @@
 
 ## Structure
 
-![Project Structure](./docs/img/graph.png)
+![Project Structure](../../docs/img/graph.png)
 
 - order-domain
   - order-application-service: 
