@@ -26,3 +26,4 @@
 /food-ordering-system/common/common-application/target/
 *.iml
 /food-ordering-system/infrastructure/kafka/kafka-model/target/
+/food-ordering-system/customer-service/target/classes/

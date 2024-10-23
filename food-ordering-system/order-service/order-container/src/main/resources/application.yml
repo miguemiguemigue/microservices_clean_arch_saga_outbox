@@ -1,0 +1,79 @@
+server:
+  port: 8181
+
+logging:
+  level:
+    com.food.ordering.system: DEBUG
+
+order-service:
+  payment-request-topic-name: payment-request
+  payment-response-topic-name: payment-response
+  restaurant-approval-request-topic-name: restaurant-approval-request
+  restaurant-approval-response-topic-name: restaurant-approval-response
+
+spring:
+  jpa:
+    open-in-view: false # prevent database connection to keep open for a long time, improves performance
+    show-sql: true
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL9Dialect
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=order&binaryTransfer=true&reWriteBatchedInserts=true&stringtype=unspecified
+    username: postgres
+    password: admin
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+    schema: classpath:init-schema.sql
+    initialization-mode: always
+
+kafka-config:
+  # broker addresses in the kafka cluster
+  bootstrap-servers: localhost:19092, localhost:29092, localhost:39092
+  # schema registry for avro support
+  schema-registry-url-key: schema.registry.url
+  schema-registry-url: http://localhost:8081
+  # for 3 concurrent consumers
+  num-of-partitions: 3
+  # improve resiliency, duplicated data in 3 different partitions in 3 different brokers
+  replication-factor: 3
+
+kafka-producer-config:
+  # for the string representation of order id
+  key-serializer-class: org.apache.kafka.common.serialization.StringSerializer
+  value-serializer-class: io.confluent.kafka.serializers.KafkaAvroSerializer
+  compression-type: snappy # good balance between speed, compression ratio and network utilization
+  acks: all # producer will wait broker confirmation (all -> best practice)
+  batch-size: 16384 # send data in batches from producer to brokers
+  batch-size-boost-factor: 100
+  linger-ms: 5 # delay to send several messages in one batch
+  request-timeout-ms: 60000 # time to wait a request before throwing error
+  retry-count: 5 # retry in case of error in producer side
+
+kafka-consumer-config:
+  key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+  value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+  # fixed group id to consume each message only once, thanks to group id and offset
+  payment-consumer-group-id: payment-topic-consumer
+  restaurant-approval-consumer-group-id: restaurant-approval-topic-consumer
+  #customer-group-id: customer-topic-consumer
+  # if no offset, start reading messages from the beginning
+  auto-offset-reset: earliest
+  # needed when using avro
+  specific-avro-reader-key: specific.avro.reader
+  specific-avro-reader: true
+  # allows to consume data in batches instead of one by one
+  batch-listener: true
+  # start consuming since launch
+  auto-startup: true
+  # creates multiple threads, in this case, concurrency level = number of partitions = max concurrency = high throughput
+  concurrency-level: 3
+  # max time without the broker receiving a heartbeat from consumer. If reached, broker marks consumer as dead and removed
+  session-timeout-ms: 10000
+  heartbeat-interval-ms: 3000 # freq sending heartbeat to the broker
+  max-poll-interval-ms: 300000 # this give enough time to the processing logic without risk of being marked as dead
+  max-poll-records: 500 # max records fetched in each poll
+  max-partition-fetch-bytes-default: 1048576 # max bytes fetched in each poll
+  max-partition-fetch-bytes-boost-factor: 1
+  poll-timeout-ms: 150 # when polling, wait some time and blocks client code, waiting for data
