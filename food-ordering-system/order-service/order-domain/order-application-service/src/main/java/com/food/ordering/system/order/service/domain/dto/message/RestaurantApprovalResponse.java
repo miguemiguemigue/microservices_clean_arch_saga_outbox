@@ -12,12 +12,11 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class RestaurantApprovalResponse {
-
     private String id;
     private String sagaId;
     private String orderId;
     private String restaurantId;
     private Instant createdAt;
     private OrderApprovalStatus orderApprovalStatus;
-    private final List<String> failureMessages;
+    private List<String> failureMessages;
 }

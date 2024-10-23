@@ -20,7 +20,8 @@ public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecor
     private final KafkaConfigData kafkaConfigData;
     private final KafkaProducerConfigData kafkaProducerConfigData;
 
-    public KafkaProducerConfig(KafkaConfigData kafkaConfigData, KafkaProducerConfigData kafkaProducerConfigData) {
+    public KafkaProducerConfig(KafkaConfigData kafkaConfigData,
+                               KafkaProducerConfigData kafkaProducerConfigData) {
         this.kafkaConfigData = kafkaConfigData;
         this.kafkaProducerConfigData = kafkaProducerConfigData;
     }
@@ -51,5 +52,4 @@ public class KafkaProducerConfig<K extends Serializable, V extends SpecificRecor
     public KafkaTemplate<K, V> kafkaTemplate() {
         return new KafkaTemplate<>(producerFactory());
     }
-
 }

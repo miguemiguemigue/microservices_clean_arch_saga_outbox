@@ -32,10 +32,6 @@
             <groupId>com.food.ordering.system</groupId>
             <artifactId>kafka-model</artifactId>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>com.food.ordering.system</groupId>-->
-<!--            <artifactId>kafka-config-data</artifactId>-->
-<!--        </dependency>-->
     </dependencies>
 
 </project>

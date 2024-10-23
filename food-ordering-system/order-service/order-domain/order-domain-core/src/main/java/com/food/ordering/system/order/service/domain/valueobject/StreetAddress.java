@@ -4,7 +4,6 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class StreetAddress {
-
     private final UUID id;
     private final String street;
     private final String postalCode;
@@ -33,7 +32,6 @@ public class StreetAddress {
         return city;
     }
 
-    // equals and hascode don't use UUID, since it's a value object
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
