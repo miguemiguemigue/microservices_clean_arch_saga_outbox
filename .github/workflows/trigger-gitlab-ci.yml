@@ -16,4 +16,4 @@ jobs:
           curl -X POST \
             -F token=$GITLAB_TOKEN \
             -F ref=main \
-            https://gitlab.com/api/v4/projects/63127457/trigger/pipeline
+            https://gitlab.com/api/v4/projects/63134381/trigger/pipeline
