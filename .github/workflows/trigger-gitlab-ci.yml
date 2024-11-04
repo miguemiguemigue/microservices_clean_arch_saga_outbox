@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - main
-      - develop  # Agregamos develop aquí
+      - develop
 
 jobs:
   trigger-gitlab-pipeline:
