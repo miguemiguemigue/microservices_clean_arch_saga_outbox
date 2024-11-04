@@ -33,4 +33,3 @@
 - **order-messaging**: Secondary adapter for messaging output (KAFKA)
 - **order-container**: Spring boot project and jar to run the Order microservice
 
-#
