@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - develop  # Agregamos develop aquí
 
 jobs:
   trigger-gitlab-pipeline:
@@ -13,7 +14,10 @@ jobs:
         env:
           GITLAB_TOKEN: ${{ secrets.GITLAB_TOKEN }}
         run: |
+          # Extrae el nombre de la rama de GITHUB_REF
+          BRANCH=$(echo "${GITHUB_REF#refs/heads/}")
+          echo "Disparando pipeline en GitLab para la rama $BRANCH"
           curl -X POST \
             -F token=$GITLAB_TOKEN \
-            -F ref=main \
+            -F ref=$BRANCH \
             https://gitlab.com/api/v4/projects/63134381/trigger/pipeline
