@@ -28,7 +28,7 @@ public class OrderDataAccessMapper {
                 .customerId(order.getCustomerId().getValue())
                 .restaurantId(order.getRestaurantId().getValue())
                 .trackingId(order.getTrackingId().getValue())
-                .address(deliveryAddressToAddressEntity(order.getStreetAddress()))
+                .address(deliveryAddressToAddressEntity(order.getDeliveryAddress()))
                 .price(order.getPrice().getAmount())
                 .items(orderItemsToOrderItemEntities(order.getItems()))
                 .orderStatus(order.getOrderStatus())
@@ -42,11 +42,11 @@ public class OrderDataAccessMapper {
     }
 
     public Order orderEntityToOrder(OrderEntity orderEntity) {
-        return Order.Builder.builder()
-                .id(new OrderId(orderEntity.getId()))
+        return Order.builder()
+                .orderId(new OrderId(orderEntity.getId()))
                 .customerId(new CustomerId(orderEntity.getCustomerId()))
                 .restaurantId(new RestaurantId(orderEntity.getRestaurantId()))
-                .streetAddress(addressEntityToDeliveryAddress(orderEntity.getAddress()))
+                .deliveryAddress(addressEntityToDeliveryAddress(orderEntity.getAddress()))
                 .price(new Money(orderEntity.getPrice()))
                 .items(orderItemEntitiesToOrderItems(orderEntity.getItems()))
                 .trackingId(new TrackingId(orderEntity.getTrackingId()))
@@ -59,12 +59,12 @@ public class OrderDataAccessMapper {
 
     private List<OrderItem> orderItemEntitiesToOrderItems(List<OrderItemEntity> items) {
         return items.stream()
-                .map(orderItemEntity -> OrderItem.Builder.builder()
-                        .id(new OrderItemId(orderItemEntity.getId()))
+                .map(orderItemEntity -> OrderItem.builder()
+                        .orderItemId(new OrderItemId(orderItemEntity.getId()))
                         .product(new Product(new ProductId(orderItemEntity.getProductId())))
                         .price(new Money(orderItemEntity.getPrice()))
                         .quantity(orderItemEntity.getQuantity())
-                        .subtotal(new Money(orderItemEntity.getSubTotal()))
+                        .subTotal(new Money(orderItemEntity.getSubTotal()))
                         .build())
                 .collect(Collectors.toList());
     }
@@ -83,7 +83,7 @@ public class OrderDataAccessMapper {
                         .productId(orderItem.getProduct().getId().getValue())
                         .price(orderItem.getPrice().getAmount())
                         .quantity(orderItem.getQuantity())
-                        .subTotal(orderItem.getSubtotal().getAmount())
+                        .subTotal(orderItem.getSubTotal().getAmount())
                         .build())
                 .collect(Collectors.toList());
     }

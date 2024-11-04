@@ -13,7 +13,6 @@ import java.util.List;
 @Builder
 @AllArgsConstructor
 public class PaymentResponse {
-
     private String id;
     private String sagaId;
     private String orderId;
@@ -22,6 +21,5 @@ public class PaymentResponse {
     private BigDecimal price;
     private Instant createdAt;
     private PaymentStatus paymentStatus;
-    private final List<String> failureMessages;
-
+    private List<String> failureMessages;
 }
