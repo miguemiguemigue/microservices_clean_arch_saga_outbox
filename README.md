@@ -24,7 +24,8 @@
 ![Project Structure](./docs/img/graph.png)
 - **order-domain**
     - order-application-service:
-        - Port definitions. Input port implementations (primary adapters)
+        - Port definitions. 
+          - Input port implementations (primary adapters)
         - Business logic
         - DTO and mappers
     - order-domain-core: Domain model
